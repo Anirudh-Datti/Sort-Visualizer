@@ -63,71 +63,71 @@ function BubbleSort(arr, n){
     return swaps
 }
 
-// function animateMerge(swaps, arr){   
-//     if  (swaps.length==0) { 
-//         showBars(arr); 
-//         return; 
-//     }
+function animateMerge(swaps, arr){   
+    if  (swaps.length==0) { 
+        showBars(arr); 
+        return; 
+    }
 
-//     const [i, j] = swaps.shift();
-//     arr[i] = j;
-//     showBars(arr, j);
-//     setTimeout(function(){
-//         animateMerge(swaps, arr);
-//     }, 50);
+    const [i, j] = swaps.shift();
+    arr[i] = j;
+    showBars(arr, j);
+    setTimeout(function(){
+        animateMerge(swaps, arr);
+    }, 50);
 
-//     return;
-// }
-// function sortMerge(arr, n){
-//     const copy = [...arr];
-//     let swaps = [];
-//     swaps = mergeSort(copy, 0, n-1, swaps);
-//     showBars(copy)
-//     animateMerge(swaps, arr);
-// }
-// function merge(arr, low, mid, high, swaps) {
-//     const temp = []; 
-//     let left = low;      
-//     let right = mid + 1;   
+    return;
+}
+function sortMerge(arr, n){
+    const copy = [...arr];
+    let swaps = [];
+    swaps = mergeSort(copy, 0, n-1, swaps);
+    showBars(copy)
+    animateMerge(swaps, arr);
+}
+function merge(arr, low, mid, high, swaps) {
+    const temp = []; 
+    let left = low;      
+    let right = mid + 1;   
 
-//     while (left <= mid && right <= high) {
-//         if (arr[left] <= arr[right]) {
-//             temp.push(arr[left]);
-//             left++;
-//         }
-//         else {
-//             temp.push(arr[right]);
-//             right++;
-//         }
-//     }
+    while (left <= mid && right <= high) {
+        if (arr[left] <= arr[right]) {
+            temp.push(arr[left]);
+            left++;
+        }
+        else {
+            temp.push(arr[right]);
+            right++;
+        }
+    }
 
-//     while (left <= mid) {
-//         temp.push(arr[left]);
-//         left++;
-//     }
-
-
-//     while (right <= high) {
-//         temp.push(arr[right]);
-//         right++;
-//     }
+    while (left <= mid) {
+        temp.push(arr[left]);
+        left++;
+    }
 
 
-//     for (let i = low; i <= high; i++) {
-//         arr[i] = temp[i - low];
-//         swaps.push( [i, temp[i-low]] );
-//     }
-//     return swaps;
+    while (right <= high) {
+        temp.push(arr[right]);
+        right++;
+    }
+
+
+    for (let i = low; i <= high; i++) {
+        arr[i] = temp[i - low];
+        swaps.push( [i, temp[i-low]] );
+    }
+    return swaps;
     
-// }
+}
 
-// function mergeSort(arr, low, high, swaps) {
-//     if (low >= high) return swaps;
-//     let mid = Math.floor((low + high) / 2) ;
-//     swaps = mergeSort(arr, low, mid, swaps);  
-//     swaps = mergeSort(arr, mid + 1, high, swaps);
-//     return merge(arr, low, mid, high, swaps);  
+function mergeSort(arr, low, high, swaps) {
+    if (low >= high) return swaps;
+    let mid = Math.floor((low + high) / 2) ;
+    swaps = mergeSort(arr, low, mid, swaps);  
+    swaps = mergeSort(arr, mid + 1, high, swaps);
+    return merge(arr, low, mid, high, swaps);  
 
-// }
+}
 
 
